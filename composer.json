@@ -17,13 +17,27 @@
     "serializer"
   ],
   "license": "MIT",
+  "repositories": [
+    {
+      "package": {
+        "name": "i-complex/xsd-reader",
+        "source": {
+          "reference": "mixed-type-definitions",
+          "type": "git",
+          "url": "https://github.com/I-complex/xsd-reader.git"
+        },
+        "version": "0.1.0"
+      },
+      "type": "package"
+    }
+  ],
   "require": {
     "php": ">=7.2|^8.0",
     "symfony/console": "^2.7|^3.0|^4.0|^5.0|^6.0",
     "symfony/dependency-injection": "^2.2|^3.0|^4.0|^5.0|^6.0",
     "symfony/yaml": "^2.2|^3.0|^4.0|^5.0|^6.0",
     "symfony/config": "^2.2|^3.0|^4.0|^5.0|^6.0",
-    "goetas-webservices/xsd-reader": "^0.3.7 | ^0.4.1",
+    "i-complex/xsd-reader": "0.1.0",
     "doctrine/inflector": "^2.0",
     "laminas/laminas-code": "^3.3.2|^4.0",
     "psr/log": "^1.0 | ^2.0 | ^3.0"
