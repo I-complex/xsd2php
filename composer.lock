@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "24143a1bd1eab72b2b155856aa5164b8",
+    "content-hash": "c7976dc1ea4cec9935ceef8aae3d7c01",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -98,14 +98,69 @@
             "time": "2024-02-18T20:23:39+00:00"
         },
         {
-            "name": "i-complex/xsd-reader",
-            "version": "0.1.0",
+            "name": "goetas-webservices/xsd-reader",
+            "version": "dev-mixed-type-definitions",
             "source": {
                 "type": "git",
                 "url": "https://github.com/I-complex/xsd-reader.git",
-                "reference": "mixed-type-definitions"
+                "reference": "02d4144245697aeba5f323efe28cce2abc3ac19e"
             },
-            "type": "library"
+            "require": {
+                "php": "^7.1|^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.10",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^7.0|^8.0|^9.0",
+                "sebastian/phpcpd": "^4.0|^5.0|^6.0",
+                "vimeo/psalm": "^3.14"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GoetasWebservices\\CS\\": "./php-cs-fixer/",
+                    "GoetasWebservices\\XML\\XSDReader\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "GoetasWebservices\\XML\\XSDReader\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "php-cs-fixer": [
+                    "php ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --verbose --allow-risky=yes --dry-run"
+                ],
+                "tests": [
+                    "php ./vendor/phpunit/phpunit/phpunit -v",
+                    "php ./vendor/phpstan/phpstan/bin/phpstan analyse -c ./phpstan.neon src",
+                    "php ./vendor/vimeo/psalm/psalm",
+                    "php ./vendor/sebastian/phpcpd/phpcpd ./src/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Asmir Mustafic",
+                    "email": "goetas@lignano.it"
+                }
+            ],
+            "description": "Read any XML Schema (XSD) programmatically with PHP",
+            "keywords": [
+                "parser",
+                "php",
+                "xml",
+                "xmlschema",
+                "xsd"
+            ],
+            "time": "2024-03-25T02:47:48+00:00"
         },
         {
             "name": "laminas/laminas-code",
@@ -3673,6 +3728,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "goetas-webservices/xsd-reader": 20,
         "goetas-webservices/xsd2php-runtime": 20
     },
     "prefer-stable": false,
