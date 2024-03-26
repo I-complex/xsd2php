@@ -432,4 +432,30 @@ class Xsd2PhpGroupTest extends Xsd2PhpBase
         $this->assertEquals('', $property->getType()->getNamespace());
         $this->assertEquals('string', $property->getType()->getName());
     }
+
+    public function testGenerateAfterBeginTextSetterForMixedComplexType()
+    {
+        $content = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+            <xs:schema version="1.0" 
+                targetNamespace="http://www.example.com" 
+                xmlns:tns="http://www.example.com"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+                elementFormDefault="unqualified">
+
+                <xs:complexType name="mixedElement" mixed="true">
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:schema>
+        ';
+        $classes = $this->getClasses($content);
+        $this->assertCount(1, $classes);
+        /** @var \GoetasWebservices\Xsd\XsdToPhp\Php\Structure\PHPClass $complexType */
+        $this->assertInstanceOf('GoetasWebservices\Xsd\XsdToPhp\Php\Structure\PHPClass', $complexType = $classes['Example\MixedElementType']);
+        $this->assertCount(1, $complexType->getMixedProperties());
+        foreach ($complexType->getMixedProperties() as $mixedProperty) {
+            $this->assertEquals('afterbegintext', $mixedProperty->getName());
+        }
+    }
 }

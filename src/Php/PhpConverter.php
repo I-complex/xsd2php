@@ -329,6 +329,10 @@ class PhpConverter extends AbstractConverter
                 $class->addProperty($property);
             }
         }
+        if ($type->isMixed()) {
+            $afterBeginTextProperty = new PHPProperty('afterbegintext');
+            $class->addMixedProperty($afterBeginTextProperty);
+        }
     }
 
     private function visitSimpleType(PHPClass $class, SimpleType $type)

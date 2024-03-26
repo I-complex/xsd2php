@@ -31,10 +31,16 @@ class ClassGenerator
                 $this->handleProperty($class, $prop);
             }
         }
+        foreach ($type->getMixedProperties() as $mixedProp) {
+            $this->handleProperty($class, $mixedProp);
+        }
         foreach ($type->getProperties() as $prop) {
             if ($prop->getName() !== '__value') {
                 $this->handleMethod($class, $prop, $type);
             }
+        }
+        foreach ($type->getMixedProperties() as $mixedProp) {
+            $this->handleMethod($class, $mixedProp, $type);
         }
 
         if (count($type->getProperties()) === 1 && $type->hasProperty('__value')) {

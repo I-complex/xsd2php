@@ -308,4 +308,27 @@ class PHPClass
 
         return $this;
     }
+
+    /**
+     * @var PHPProperty[]
+     */
+    protected $mixedProperties = [];
+
+    /**
+     * @return PHPProperty[]
+     */
+    public function getMixedProperties()
+    {
+        return $this->mixedProperties;
+    }
+
+    /**
+     * @return $this
+     */
+    public function addMixedProperty(PHPProperty $property)
+    {
+        $this->mixedProperties[$property->getName()] = $property;
+
+        return $this;
+    }
 }
