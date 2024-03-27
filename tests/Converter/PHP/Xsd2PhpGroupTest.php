@@ -455,7 +455,7 @@ class Xsd2PhpGroupTest extends Xsd2PhpBase
         $this->assertInstanceOf('GoetasWebservices\Xsd\XsdToPhp\Php\Structure\PHPClass', $complexType = $classes['Example\MixedElementType']);
         $this->assertCount(1, $complexType->getMixedProperties());
         foreach ($complexType->getMixedProperties() as $mixedProperty) {
-            $this->assertEquals('afterbegintext', $mixedProperty->getName());
+            $this->assertEquals('afterBeginText', $mixedProperty->getName());
         }
     }
 }

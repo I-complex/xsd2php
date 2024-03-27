@@ -330,7 +330,7 @@ class PhpConverter extends AbstractConverter
             }
         }
         if ($type->isMixed()) {
-            $afterBeginTextProperty = new PHPProperty('afterbegintext');
+            $afterBeginTextProperty = new PHPProperty('afterBeginText');
             $class->addMixedProperty($afterBeginTextProperty);
         }
     }
