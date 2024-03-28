@@ -352,10 +352,10 @@ class Xsd2PhpElementTest extends Xsd2JmsBase
                 'Example\\MixedElementType' => [
                     'Example\\MixedElementType' => [
                         'mixedproperties' => [
-                            'afterbegintext' => [
+                            'afterBeginText' => [
                                 'expose' => true,
                                 'access_type' => 'public_method',
-                                'serialized_name' => 'afterbegintext',
+                                'serialized_name' => 'afterBeginText',
                                 'accessor' => [
                                     'getter' => 'getAfterBeginText',
                                     'setter' => 'setAfterBeginText',

@@ -27,10 +27,10 @@ use GoetasWebservices\Xsd\XsdToPhp\Php\Structure\PHPClass;
 class YamlConverter extends AbstractConverter
 {
     const COMPLEX_TYPE_MIXED_PROPERTIES = [
-        'afterbegintext' => [
+        'afterBeginText' => [
             'expose' => true,
             'access_type' => 'public_method',
-            'serialized_name' => 'afterbegintext',
+            'serialized_name' => 'afterBeginText',
             'accessor' => [
                 'getter' => 'getAfterBeginText',
                 'setter' => 'setAfterBeginText',
