@@ -1,5 +1,5 @@
 {
-  "name": "goetas-webservices/xsd2php",
+  "name": "i-complex/xsd2php",
   "description": "Convert XSD  (XML Schema) definitions into PHP classes and JMS metadata",
   "type": "library",
   "authors": [
@@ -17,19 +17,13 @@
     "serializer"
   ],
   "license": "MIT",
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/I-complex/xsd-reader.git"
-    }
-  ],
   "require": {
     "php": ">=7.2|^8.0",
     "symfony/console": "^2.7|^3.0|^4.0|^5.0|^6.0",
     "symfony/dependency-injection": "^2.2|^3.0|^4.0|^5.0|^6.0",
     "symfony/yaml": "^2.2|^3.0|^4.0|^5.0|^6.0",
     "symfony/config": "^2.2|^3.0|^4.0|^5.0|^6.0",
-    "goetas-webservices/xsd-reader": "dev-mixed-type-definitions",
+    "i-complex/xsd-reader": "^0.1",
     "doctrine/inflector": "^2.0",
     "laminas/laminas-code": "^3.3.2|^4.0",
     "psr/log": "^1.0 | ^2.0 | ^3.0"
