@@ -26,6 +26,20 @@ use GoetasWebservices\Xsd\XsdToPhp\Php\Structure\PHPClass;
 
 class YamlConverter extends AbstractConverter
 {
+    const COMPLEX_TYPE_MIXED_PROPERTIES = [
+        'afterBeginText' => [
+            'expose' => true,
+            'access_type' => 'public_method',
+            'serialized_name' => 'afterBeginText',
+            'accessor' => [
+                'getter' => 'getAfterBeginText',
+                'setter' => 'setAfterBeginText',
+            ],
+            'xml_attribute' => true,
+            'type' => 'string',
+        ],
+    ];
+
     protected $useCdata = true;
 
     public function __construct(NamingStrategy $namingStrategy)
@@ -293,6 +307,9 @@ class YamlConverter extends AbstractConverter
     private function visitComplexType(&$class, &$data, ComplexType $type)
     {
         $schema = $type->getSchema();
+        if ($type->isMixed()) {
+            $data['mixedproperties'] = self::COMPLEX_TYPE_MIXED_PROPERTIES;
+        }
         if (!isset($data['properties'])) {
             $data['properties'] = [];
         }

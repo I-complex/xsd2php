@@ -31,10 +31,16 @@ class ClassGenerator
                 $this->handleProperty($class, $prop);
             }
         }
+        foreach ($type->getMixedProperties() as $mixedProp) {
+            $this->handleProperty($class, $mixedProp);
+        }
         foreach ($type->getProperties() as $prop) {
             if ($prop->getName() !== '__value') {
                 $this->handleMethod($class, $prop, $type);
             }
+        }
+        foreach ($type->getMixedProperties() as $mixedProp) {
+            $this->handleMethod($class, $mixedProp, $type);
         }
 
         if (count($type->getProperties()) === 1 && $type->hasProperty('__value')) {
@@ -127,7 +133,7 @@ class ClassGenerator
         $patramTag = new ParamTag($prop->getName());
         $docblock->setTag($patramTag);
 
-        $return = new ReturnTag('self');
+        $return = new ReturnTag('static');
         $docblock->setTag($return);
 
         $type = $prop->getType();
@@ -284,7 +290,7 @@ class ClassGenerator
         }
 
         $return = new ReturnTag();
-        $return->setTypes('self');
+        $return->setTypes('static');
         $docblock->setTag($return);
 
         $patramTag = new ParamTag($propName, $type->getArg()->getType()->getPhpType());

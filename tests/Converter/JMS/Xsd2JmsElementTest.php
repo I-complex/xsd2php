@@ -326,4 +326,58 @@ class Xsd2PhpElementTest extends Xsd2JmsBase
                 ],
             ], $classes);
     }
+
+    public function testAfterBeginTextSetterForMixedTypeElement()
+    {
+        $xsd = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+            <xs:schema version="1.0" 
+                targetNamespace="http://www.example.com" 
+                xmlns:tns="http://www.example.com"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+                elementFormDefault="unqualified">
+            
+                <xs:complexType name="mixedElement" mixed="true">
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:schema>
+            ';
+        $classes = $this->getClasses($xsd);
+
+        $this->assertCount(1, $classes);
+
+        $this->assertEquals(
+            [
+                'Example\\MixedElementType' => [
+                    'Example\\MixedElementType' => [
+                        'mixedproperties' => [
+                            'afterBeginText' => [
+                                'expose' => true,
+                                'access_type' => 'public_method',
+                                'serialized_name' => 'afterBeginText',
+                                'accessor' => [
+                                    'getter' => 'getAfterBeginText',
+                                    'setter' => 'setAfterBeginText',
+                                ],
+                                'type' => 'string',
+                                'xml_attribute' => true,
+                            ],
+                        ],
+                        'properties' => [
+                            'id' => [
+                                'expose' => true,
+                                'access_type' => 'public_method',
+                                'serialized_name' => 'id',
+                                'accessor' => [
+                                    'getter' => 'getId',
+                                    'setter' => 'setId',
+                                ],
+                                'type' => 'string',
+                            ],
+                        ],
+                    ],
+                ],
+            ], $classes);
+    }
 }
